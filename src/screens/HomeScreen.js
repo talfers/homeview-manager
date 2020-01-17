@@ -11,7 +11,7 @@ const HomeScreen = () => {
         return (
           <View key={item.name} style={styles.box}>
             <ImageBackground source={{uri: item.img}} style={{width: '100%', height: '100%'}}>
-              <Link routeName={'Test'} style={styles.box}>
+              <Link routeName={'Signin'} style={styles.box}>
                 <Header style={styles.white} title={item.name} />
               </Link>
             </ImageBackground>

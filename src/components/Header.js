@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
     textShadowColor: 'grey',
     textShadowOffset: {width: 1, height: 1},
     textShadowRadius: 4,
-    color: 'white'
+    color: 'white',
+    alignSelf: 'center'
   }
 })
 
