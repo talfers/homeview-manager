@@ -1,6 +1,7 @@
 import createDataContext from './createDataContext';
 import authApi from '../api/authApi';
 import qs from 'qs';
+import { navigate } from '../navigationRef';
 
 const authReducer = (state, action) => {
   switch(action.type) {
@@ -25,6 +26,7 @@ const signin = (dispatch) => {
       const res = await authApi.post('/signin', qs.stringify({email, password}));
       if(res.data.loggedIn) {
         dispatch({type: 'signin', payload: {email, loggedIn: res.data.loggedIn}})
+        navigate('Items');
       }
       if(res.data.errors) {
         dispatch({type: 'add_errors', payload: res.data.errors})
@@ -43,6 +45,7 @@ const signup = (dispatch) => {
       console.log(res.data);
       if(res.data.user) {
         dispatch({type: 'signup', payload: res.data.user});
+        navigate('Signin');
       }
       if(res.data.errors) {
         dispatch({type: 'add_errors', payload: res.data.errors})

@@ -7,6 +7,7 @@ import SignupScreen from './src/screens/SignupScreen';
 import { Provider as AuthProvider } from './src/context/AuthContext';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { setNavigator } from './src/navigationRef';
 
 
 const navigator = createStackNavigator({
@@ -15,7 +16,7 @@ const navigator = createStackNavigator({
     Signin: SigninScreen,
     Signup: SignupScreen
 }, {
-  initialRouteName: 'Home',
+  initialRouteName: 'Signin',
   defaultNavigationOptions: {
     title: 'App'
   }
@@ -32,7 +33,7 @@ const App = createAppContainer(navigator);
 export default () => {
   return (
     <AuthProvider>
-      <App/>
+      <App ref={(navigator) => setNavigator(navigator)}/>
     </AuthProvider>
   )
 }
