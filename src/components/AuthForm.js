@@ -3,8 +3,9 @@ import { Text, TextInput, View, StyleSheet, KeyboardAvoidingView } from 'react-n
 import Spacer from './Spacer';
 import Header from './Header';
 import Button from './Button';
+import NavLink from './NavLink';
 
-const AuthForm = ({ title, onSubmit, errors, clearErrors }) => {
+const AuthForm = ({ title, actionTitle, redirectRoute, onSubmit, errors, clearErrors }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
@@ -34,7 +35,7 @@ const AuthForm = ({ title, onSubmit, errors, clearErrors }) => {
           secureTextEntry={true}
         />
       </View>
-      {title === 'Sign Up'?
+      {actionTitle === 'Sign Up'?
         <View style={styles.inputWrapper}>
           <Text style={styles.label}>Password 2: </Text>
           <TextInput
@@ -58,7 +59,14 @@ const AuthForm = ({ title, onSubmit, errors, clearErrors }) => {
         <Button onPress={() => {
           clearErrors();
           onSubmit( { email, password, password2 } )
-        }} title={title} />
+        }} title={actionTitle} />
+      </Spacer>
+      <Spacer>
+        <NavLink
+          title={actionTitle === 'Sign Up'?
+             "Already have an accont? Sign In"  :  "Dont have an accont? Sign Up" }
+          routeName={redirectRoute}
+        />
       </Spacer>
     </KeyboardAvoidingView>
   )
