@@ -9,7 +9,7 @@ const Spacer = ({children}) => {
 
 const styles = StyleSheet.create({
   margin: {
-    margin: 12
+    marginVertical: 12
   }
 });
 

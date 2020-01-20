@@ -1,19 +1,18 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-const Header = ({title}) => {
+const Header = ({title, propStyle}) => {
   return (
     <View>
-      <Text style={styles.text}>{title}</Text>
+      <Text style={{...styles.text, ...propStyle}}>{title}</Text>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 36,
-    color: '#888',
-    alignSelf: 'center'
+    fontSize: 32,
+    color: '#04133d'
   }
 })
 

@@ -26,7 +26,7 @@ const signin = (dispatch) => {
       const res = await authApi.post('/signin', qs.stringify({email, password}));
       if(res.data.loggedIn) {
         dispatch({type: 'signin', payload: {email, loggedIn: res.data.loggedIn}})
-        navigate('Items');
+        navigate('Home');
       }
       if(res.data.errors) {
         dispatch({type: 'add_errors', payload: res.data.errors})

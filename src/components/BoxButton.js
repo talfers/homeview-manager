@@ -2,30 +2,30 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Header from '../components/Header';
 import Link from '../components/Link';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { boxShadow, blue } from '../styles/styles';
 
-const BoxButton = ({item}) => {
+const BoxButton = ({name, image}) => {
   return (
-    <View key={item.name} style={styles.box}>
-      <Link routeName={item.name} style={''}>
-        <Header title={item.name} />
-      </Link>
-    </View>
+    <Link routeName={name} style={styles.box}>
+      <View key={name} >
+        <MaterialCommunityIcons name={image} style={{alignSelf: 'center', color: blue}} size={40} />
+        <Header title={name} />
+      </View>
+    </Link>
   )
 }
 
 const styles = StyleSheet.create({
   box: {
-    height: 180,
-    width: 180,
+    height: 140,
+    width: 280,
     borderRadius: 20,
-    overflow: 'hidden',
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: .01,
-    shadowColor: 'lightgrey',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 2,
-    shadowRadius: 10,
+    borderColor: 'black',
+    ...boxShadow,
+    backgroundColor: '#ffffff'
   }
 })
 

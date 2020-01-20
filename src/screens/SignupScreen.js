@@ -4,7 +4,7 @@ import AuthForm from '../components/AuthForm';
 import NavLink from '../components/NavLink';
 import { Context as AuthContext } from '../context/AuthContext';
 
-const SigninScreen = () => {
+const SignupScreen = () => {
   const { state, signup, clearErrors } = useContext(AuthContext);
   return (
     <View behavior='padding' enabled style={styles.bg}>
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default SigninScreen;
+export default SignupScreen;

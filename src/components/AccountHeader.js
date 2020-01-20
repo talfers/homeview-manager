@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image ,StyleSheet } from 'react-native';
 import Header from './Header';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { lightBlue, bottomShadow } from '../styles/styles'
 
 const AccountHeader = ({image, balance, duration_remaining}) => {
   return (
@@ -18,9 +19,8 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     padding: 24,
-    borderBottomWidth: 1,
-    borderBottomColor: 'grey',
-    backgroundColor: '#f0f0f0'
+    backgroundColor: lightBlue,
+    ...bottomShadow
   },
   image: {
     width: 80,

@@ -2,10 +2,12 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Header from './Header';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { withNavigation } from 'react-navigation';
+import { boxShadow } from '../styles/styles';
 
-const ActionBar = ({title}) => {
+const ActionBar = ({title, routeName, navigation}) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity onPress={() => navigation.navigate(routeName)} style={styles.container}>
       <View><Text style={styles.title}>{title}</Text></View>
       <View><MaterialCommunityIcons name={'arrow-right'} size={30}/></View>
     </TouchableOpacity>
@@ -20,8 +22,7 @@ const styles = StyleSheet.create({
     margin: 20,
     padding: 16,
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: 'grey',
+    ...boxShadow,
     backgroundColor: 'white'
   },
   title: {
@@ -29,4 +30,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default ActionBar;
+export default withNavigation(ActionBar);

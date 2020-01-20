@@ -11,7 +11,7 @@ const AuthForm = ({ title, actionTitle, redirectRoute, onSubmit, errors, clearEr
   const [password2, setPassword2] = useState('');
   return (
     <KeyboardAvoidingView behavior="padding" enabled style={styles.container}>
-    <Header title={title?title:''}/>
+    <Header title={title?title:''} propStyle={{color: 'white', alignSelf: 'center'}}/>
       <View style={styles.inputWrapper}>
       <Text style={styles.label}>Email: </Text>
         <TextInput
@@ -37,7 +37,7 @@ const AuthForm = ({ title, actionTitle, redirectRoute, onSubmit, errors, clearEr
       </View>
       {actionTitle === 'Sign Up'?
         <View style={styles.inputWrapper}>
-          <Text style={styles.label}>Password 2: </Text>
+          <Text style={styles.label}>Confirm Password: </Text>
           <TextInput
             style={styles.input}
             value={password2}

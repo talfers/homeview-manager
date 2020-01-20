@@ -8,7 +8,7 @@ const AccountScreen = () => {
   return (
     <View style={styles.container}>
       <AccountHeader />
-      <ActionBar title={"Edit Profile"} />
+      <ActionBar title={"Edit Profile"} routeName={'EditProfile'} />
       <ActionBar title={"Maintenance Requests"}/>
       <ActionBar title={"Transaction History"} />
     </View>
@@ -19,7 +19,8 @@ const AccountScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: 'white'
   }
 })
 
