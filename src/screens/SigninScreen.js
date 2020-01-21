@@ -9,7 +9,7 @@ const SigninScreen = () => {
   return (
     <View behavior='padding' enabled style={styles.bg}>
       <AuthForm
-        title={'Welcome Back'}
+        title={'Welcome Back.'}
         actionTitle={'Sign In'}
         redirectRoute={'Signup'}
         clearErrors={clearErrors}
