@@ -64,7 +64,7 @@ const AuthForm = ({ title, actionTitle, redirectRoute, onSubmit, errors, clearEr
       <Spacer>
         <NavLink
           title={actionTitle === 'Sign Up'?
-             "Already have an accont? Sign In"  :  "Dont have an accont? Sign Up" }
+             "Already have an account? Sign In"  :  "Dont have an account? Sign Up" }
           routeName={redirectRoute}
         />
       </Spacer>

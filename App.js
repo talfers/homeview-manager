@@ -79,8 +79,9 @@ const switchNavigator = createSwitchNavigator({
       activeTintColor: iconColor,
       inactiveTintColor: 'gray',
     },
-  }),
-  Loading: LoadingScreen
+
+
+  })
 });
 
 

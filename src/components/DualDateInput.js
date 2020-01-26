@@ -3,9 +3,7 @@ import { Text, TextInput, View, TouchableOpacity, StyleSheet } from 'react-nativ
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { capitalize } from '../functions'
 
-const DualDateInput = ({ labelRight, labelLeft, value, setValue, keyboard }) => {
-  const [startDate, setStartDate] = useState(new Date())
-  const [endDate, setEndDate] = useState(new Date())
+const DualDateInput = ({ labelRight, labelLeft, startDate, endDate, setStartDate, setEndDate }) => {
   const [startDateOpen, setStartDateOpen] = useState()
   const [endDateOpen, setEndDateOpen] = useState()
   return (
@@ -15,23 +13,23 @@ const DualDateInput = ({ labelRight, labelLeft, value, setValue, keyboard }) => 
           <TouchableOpacity onPress={() => {setStartDateOpen(!endDateOpen? !startDateOpen: null)}}>
             <Text style={styles.label}>{(!startDateOpen && !endDateOpen) || startDateOpen? capitalize(labelLeft) + ":": ""} </Text>
           </TouchableOpacity>
-          <Text></Text>
+          <Text>{startDate?startDate.toString().slice(0, 15):""}</Text>
         </View>
         <View style={styles.rightLabel}>
           <TouchableOpacity onPress={() => {setEndDateOpen(!startDateOpen? !endDateOpen: null)}}>
             <Text style={styles.label}>{(!startDateOpen && !endDateOpen) || endDateOpen? capitalize(labelRight) + ":": ""} </Text>
           </TouchableOpacity>
-          <Text></Text>
+          <Text>{endDate?endDate.toString().slice(0, 15):""}</Text>
         </View>
       </View>
       {
         startDateOpen && !endDateOpen?
           <DateTimePicker
-            value={startDate}
+            value={startDate || new Date()}
             mode={'date'}
             is24Hour={true}
             display="default"
-            onChange={(e) => {}}
+            onChange={(e) => {setStartDate(new Date(e.nativeEvent.timestamp))}}
           />
         :
           <></>
@@ -39,11 +37,11 @@ const DualDateInput = ({ labelRight, labelLeft, value, setValue, keyboard }) => 
       {
         endDateOpen && !startDateOpen?
           <DateTimePicker
-            value={endDate}
+            value={endDate || new Date()}
             mode={'date'}
             is24Hour={true}
             display="default"
-            onChange={(e) => {}}
+            onChange={(e) => {setEndDate(new Date(e.nativeEvent.timestamp))}}
           />
         :
           <></>

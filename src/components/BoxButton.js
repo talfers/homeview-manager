@@ -19,6 +19,7 @@ const BoxButton = ({name, image}) => {
 const styles = StyleSheet.create({
   box: {
     height: 140,
+    marginVertical: 20,
     width: 280,
     borderRadius: 20,
     alignItems: 'center',

@@ -22,9 +22,10 @@ const styles = StyleSheet.create({
   container: {
     ...bottomShadow,
     zIndex: 99,
+    marginBottom: 12
   },
   image: {
-    height: 200,
+    height: 168,
     alignItems: 'flex-start',
     justifyContent: 'center'
   },
