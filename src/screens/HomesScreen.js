@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { categoryData } from '../data/categoryData';
 import BoxButton from '../components/BoxButton';
 import BrandHeader from '../components/BrandHeader';
+import { NavigationEvents } from 'react-navigation';
+import { Context as HomeContext } from '../context/HomeContext';
+import Loading from '../components/Loading';
 
-const HomeScreen = () => {
+const HomesScreen = () => {
+  const { getHomes, state } = useContext(HomeContext);
   return (
     <>
+      <Loading />
+      <NavigationEvents onWillFocus={() => {getHomes()}} />
       <BrandHeader />
       <View style={styles.container}>
-        {categoryData.map((item) => {
+        {state.homes.map(home => {
           return (
-              <BoxButton key={item.name} name={item.name} image={item.image} />
+            <View key={home.id}>
+              <Text>{home.title}</Text>
+            </View>
           )
         })}
       </View>
@@ -30,4 +38,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default HomeScreen;
+export default HomesScreen;

@@ -1,24 +1,18 @@
 import React from 'react';
-import { Image } from 'react-native';
-import HomeScreen from './src/screens/HomeScreen';
-import PayScreen from './src/screens/PayScreen';
-import MaintScreen from './src/screens/MaintScreen';
-import DocsScreen from './src/screens/DocsScreen';
+import HomesScreen from './src/screens/HomesScreen';
 import SocialScreen from './src/screens/SocialScreen';
-import AccountScreen from './src/screens/AccountScreen';
-import InfoScreen from './src/screens/InfoScreen';
-import EditProfileScreen from './src/screens/EditProfileScreen';
+import SettingsScreen from './src/screens/SettingsScreen';
+import TenantsScreen from './src/screens/TenantsScreen';
 import LoadingScreen from './src/screens/LoadingScreen';
-import TestContextScreen from './src/screens/TestContextScreen';
 import SigninScreen from './src/screens/SigninScreen';
 import SignupScreen from './src/screens/SignupScreen';
 import { Provider as AuthProvider } from './src/context/AuthContext';
+import { Provider as HomeProvider } from './src/context/HomeContext';
 import { Provider as TenantProvider } from './src/context/TenantContext';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { setNavigator } from './src/navigationRef';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { setCustomText } from 'react-native-global-props';
 import { darkBlue } from './src/styles/styles';
@@ -38,17 +32,13 @@ const switchNavigator = createSwitchNavigator({
     Signup: SignupScreen
   }),
   userFlow: createBottomTabNavigator({
-    Home: createStackNavigator({
-      Home: HomeScreen,
-      Pay: PayScreen,
-      Maintenance: MaintScreen,
-      Documents: DocsScreen
+    Homes: createStackNavigator({
+      Homes: HomesScreen
     }),
-    Info: InfoScreen,
-    Social: SocialScreen,
-    Account: createStackNavigator({
-      Account: AccountScreen,
-      EditProfile: EditProfileScreen
+    Tenants: TenantsScreen,
+    Requests: SocialScreen,
+    Settings: createStackNavigator({
+      Settings: SettingsScreen
     })
   },
   {
@@ -56,19 +46,19 @@ const switchNavigator = createSwitchNavigator({
       tabBarIcon: ({ focused, horizontal, tintColor }) => {
         const { routeName } = navigation.state;
         let icon;
-        if (routeName === 'Home') {
+        if (routeName === 'Homes') {
           icon = focused ? {color: iconColor, iconName:'door-open'} : {color: 'grey', iconName:'door-closed'};
           // Sometimes we want to add badges to some icons.
           // You can check the implementation below.
         }
-        else if (routeName === 'Account') {
-          icon = focused ? {color: iconColor, iconName:'account-circle'} : {color: 'grey', iconName:'account-circle-outline'};
+        else if (routeName === 'Settings') {
+          icon = focused ? {color: iconColor, iconName:'settings'} : {color: 'grey', iconName:'settings-outline'};
         }
-        else if (routeName === 'Social') {
-          icon = focused ? {color: iconColor, iconName:'message-text'} : {color: 'grey', iconName:'message-outline'};
+        else if (routeName === 'Requests') {
+          icon = focused ? {color: iconColor, iconName:'send'} : {color: 'grey', iconName:'send'};
         }
-        else if (routeName === 'Info') {
-          icon = focused ? {color: iconColor, iconName:'information'} : {color: 'grey', iconName:'information-outline'};
+        else if (routeName === 'Tenants') {
+          icon = focused ? {color: iconColor, iconName:'home-account'} : {color: 'grey', iconName:'home-account'};
         }
 
         // You can return any component that you like here!
@@ -85,7 +75,7 @@ const switchNavigator = createSwitchNavigator({
 });
 
 
-HomeScreen.navigationOptions = {
+HomesScreen.navigationOptions = {
   headerShown: false
 }
 
@@ -101,7 +91,7 @@ SignupScreen.navigationOptions = () => {
   }
 }
 
-AccountScreen.navigationOptions = {
+SettingsScreen.navigationOptions = {
   headerShown: false
 }
 
@@ -110,9 +100,11 @@ const App = createAppContainer(switchNavigator);
 export default () => {
   return (
     <AuthProvider>
-      <TenantProvider>
-        <App ref={(navigator) => setNavigator(navigator)}/>
-      </TenantProvider>
+      <HomeProvider>
+        <TenantProvider>
+          <App ref={(navigator) => setNavigator(navigator)}/>
+        </TenantProvider>
+      </HomeProvider>
     </AuthProvider>
   )
 }

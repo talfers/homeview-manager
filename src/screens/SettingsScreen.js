@@ -6,7 +6,7 @@ import AccountHeader from '../components/AccountHeader';
 import ActionBar from '../components/ActionBar';
 import { Context as AuthContext } from '../context/AuthContext';
 
-const AccountScreen = () => {
+const SettingsScreen = () => {
   const { state, checkProfile } = useContext(AuthContext);
   return (
       <View style={styles.container}>
@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default AccountScreen;
+export default SettingsScreen;

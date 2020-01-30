@@ -7,7 +7,7 @@ import { boxShadow } from '../styles/styles';
 
 const ActionBar = ({title, routeName, navigation}) => {
   return (
-    <TouchableOpacity onPress={() => navigation.navigate(routeName)} style={styles.container}>
+    <TouchableOpacity onPress={() => routeName?navigation.navigate(routeName):null} style={styles.container}>
       <View><Text style={styles.title}>{title}</Text></View>
       <View><MaterialCommunityIcons name={'arrow-right'} size={30}/></View>
     </TouchableOpacity>

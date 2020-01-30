@@ -34,7 +34,7 @@ const signin = (dispatch) => {
         dispatch({type: 'signin', payload: {email, loggedIn: res.data.loggedIn}})
         let tenantCheck = await authApi.post('/tenants', qs.stringify({type: 'findOne', email: email}))
         dispatch({type: 'check_profile', payload: tenantCheck.data.tenant })
-        navigate('Account');
+        navigate('Settings');
       }
       if(res.data.errors) {
         dispatch({type: 'add_errors', payload: res.data.errors})
