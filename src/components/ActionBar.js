@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginHorizontal: 20,
-    marginVertical: 12,
-    padding: 16,
+    marginVertical: 10,
+    padding: 10,
     borderRadius: 10,
     ...boxShadow,
     backgroundColor: 'white'

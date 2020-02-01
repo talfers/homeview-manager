@@ -1,13 +1,12 @@
 export const boxShadow = {
   shadowColor: "#000",
-shadowOffset: {
-width: 0,
-height: 2,
-},
-shadowOpacity: 0.25,
-shadowRadius: 3.84,
-
-elevation: 5,
+  shadowOffset: {
+  width: 0,
+  height: 2,
+  },
+  shadowOpacity: 0.25,
+  shadowRadius: 3.84,
+  elevation: 5,
 }
 
 export const bottomShadow = {
@@ -26,3 +25,5 @@ export const lightBlue = '#C4DBF6'
 export const darkBlue = '#04133d'
 
 export const blue = 'dodgerblue'
+
+export const lightGreen = '#00cc00'

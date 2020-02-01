@@ -13,6 +13,8 @@ const homeReducer = (state, action) => {
       return { ...state, tenants: tempTenants };
     case 'edit_home':
       return state;
+    case 'loading':
+      return { ...state, loading: action.payload }
     default:
       return state;
   }
@@ -20,13 +22,14 @@ const homeReducer = (state, action) => {
 
 const getHomes = (dispatch) => {
   return async () => {
+    dispatch({type: 'loading', payload: true})
     try {
       const res = await authApi.get('/homes');
-      console.log(res.data.homes);
       dispatch({type: 'get_homes', payload: res.data.homes})
     } catch (err) {
       console.log(err);
     }
+    dispatch({type: 'loading', payload: false})
   }
 }
 

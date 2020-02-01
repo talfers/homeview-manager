@@ -1,5 +1,6 @@
 import React from 'react';
 import HomesScreen from './src/screens/HomesScreen';
+import HomeDetailScreen from './src/screens/HomeDetailScreen';
 import SocialScreen from './src/screens/SocialScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 import TenantsScreen from './src/screens/TenantsScreen';
@@ -33,7 +34,8 @@ const switchNavigator = createSwitchNavigator({
   }),
   userFlow: createBottomTabNavigator({
     Homes: createStackNavigator({
-      Homes: HomesScreen
+      Homes: HomesScreen,
+      HomeDetail: HomeDetailScreen
     }),
     Tenants: TenantsScreen,
     Requests: SocialScreen,

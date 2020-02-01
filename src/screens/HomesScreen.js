@@ -1,28 +1,30 @@
 import React, { useContext } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, ScrollView, StyleSheet } from 'react-native';
 import { categoryData } from '../data/categoryData';
 import BoxButton from '../components/BoxButton';
 import BrandHeader from '../components/BrandHeader';
 import { NavigationEvents } from 'react-navigation';
 import { Context as HomeContext } from '../context/HomeContext';
 import Loading from '../components/Loading';
+import HomeItem from '../components/HomeItem';
+import PlusButton from '../components/PlusButton';
 
-const HomesScreen = () => {
+const HomesScreen = ({navigation}) => {
   const { getHomes, state } = useContext(HomeContext);
   return (
     <>
-      <Loading />
+      <Loading loading={state.loading} />
       <NavigationEvents onWillFocus={() => {getHomes()}} />
       <BrandHeader />
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         {state.homes.map(home => {
           return (
-            <View key={home.id}>
-              <Text>{home.title}</Text>
-            </View>
+            <HomeItem key={home.id} home={home} onPress={() => {navigation.navigate('HomeDetail', {id: home.id})}}/>
           )
         })}
-      </View>
+
+      </ScrollView>
+      <PlusButton propStyles={{bottom: 10, right: 10}}/>
     </>
 
   )
@@ -31,8 +33,6 @@ const HomesScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'center',
     backgroundColor: 'white'
   }
 });

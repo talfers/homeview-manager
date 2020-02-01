@@ -13,6 +13,8 @@ const tenantReducer = (state, action) => {
       return { ...state, tenants: tempTenants };
     case 'edit_tenant':
       return state;
+    case 'loading':
+      return { ...state, loading: action.payload }
     default:
       return state;
   }
@@ -20,12 +22,14 @@ const tenantReducer = (state, action) => {
 
 const getTenants = (dispatch) => {
   return async () => {
+    dispatch({type: 'loading', payload: true})
     try {
       const res = await authApi.get('/tenants');
       dispatch({type: 'get_tenants', payload: res.data.tenants})
     } catch (err) {
       console.log(err);
     }
+    dispatch({type: 'loading', payload: false})
   }
 }
 
