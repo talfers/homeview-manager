@@ -1,6 +1,7 @@
 import React from 'react';
 import HomesScreen from './src/screens/HomesScreen';
 import HomeDetailScreen from './src/screens/HomeDetailScreen';
+import CreateHomeScreen from './src/screens/CreateHomeScreen';
 import SocialScreen from './src/screens/SocialScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 import TenantsScreen from './src/screens/TenantsScreen';
@@ -35,7 +36,8 @@ const switchNavigator = createSwitchNavigator({
   userFlow: createBottomTabNavigator({
     Homes: createStackNavigator({
       Homes: HomesScreen,
-      HomeDetail: HomeDetailScreen
+      HomeDetail: HomeDetailScreen,
+      CreateHome: CreateHomeScreen
     }),
     Tenants: TenantsScreen,
     Requests: SocialScreen,
@@ -76,7 +78,6 @@ const switchNavigator = createSwitchNavigator({
   })
 });
 
-
 HomesScreen.navigationOptions = {
   headerShown: false
 }
@@ -88,6 +89,12 @@ SigninScreen.navigationOptions = () => {
 }
 
 SignupScreen.navigationOptions = () => {
+  return {
+    headerShown: false
+  }
+}
+
+CreateHomeScreen.navigationOptions = () => {
   return {
     headerShown: false
   }

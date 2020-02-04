@@ -1,3 +1,13 @@
+export const brand = require('../../assets/brand/door128.png');
+
+export default boxShadowCss = `
+  shadow-color: grey;
+  shadow-offset: 0px 2px;
+  shadow-opacity: 0.25;
+  shadow-radius: 5.84px;
+  elevation: 15;
+`;
+
 export const boxShadow = {
   shadowColor: "#000",
   shadowOffset: {

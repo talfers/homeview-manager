@@ -7,7 +7,7 @@ import { NavigationEvents } from 'react-navigation';
 import { Context as HomeContext } from '../context/HomeContext';
 import Loading from '../components/Loading';
 import HomeItem from '../components/HomeItem';
-import PlusButton from '../components/PlusButton';
+import CircleButton from '../components/CircleButton';
 
 const HomesScreen = ({navigation}) => {
   const { getHomes, state } = useContext(HomeContext);
@@ -24,7 +24,7 @@ const HomesScreen = ({navigation}) => {
         })}
 
       </ScrollView>
-      <PlusButton propStyles={{bottom: 10, right: 10}}/>
+      <CircleButton icon={"plus"} onPress={() => navigation.navigate('CreateHome')} propStyles={{position: 'absolute', bottom: 10, right: 10}}/>
     </>
 
   )

@@ -10,7 +10,7 @@ const homeReducer = (state, action) => {
       return { ...state, homes: action.payload }
     case 'add_home':
       let tempHomes = [...state.homes, action.payload];
-      return { ...state, tenants: tempTenants };
+      return { ...state, homes: tempHomes };
     case 'edit_home':
       return state;
     case 'loading':
@@ -38,7 +38,7 @@ const addHome = (dispatch) => {
     try {
       const res = await authApi.post('/homes', qs.stringify(home));
       dispatch({type: 'add_home', payload: res.data.home});
-      navigate('Account');
+      navigate('Homes');
     } catch (err) {
       console.log(err);
     }

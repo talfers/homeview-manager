@@ -1,11 +1,12 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { lightBlue, darkBlue, blue, boxShadow } from '../styles/styles';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-const PlusButton = ({propStyles, onPress}) => {
+const PlusButton = ({propStyles, onPress, icon}) => {
   return (
     <TouchableOpacity onPress={() => {onPress?onPress():null}} style={{...styles.plusBtn, ...propStyles}}>
-      <Text style={{fontSize: 40, color: darkBlue}}>+</Text>
+      <MaterialCommunityIcons size={36} name={icon} />
     </TouchableOpacity>
   )
 }
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
     backgroundColor: blue,
     alignItems: 'center',
     justifyContent: 'center',
-    position: 'absolute',
+
     // bottom: -44,
     ...boxShadow
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { lightBlue, darkBlue, blue, boxShadow } from '../styles/styles';
-import PlusButton from './PlusButton';
+import CircleButton from './CircleButton';
 
 const ContractSlider = ({home, navigation}) => {
   return (
@@ -14,12 +14,12 @@ const ContractSlider = ({home, navigation}) => {
         <View style={styles.box}>
           <MaterialCommunityIcons size={60} color={"lightgrey"} name={"file-document-box-multiple"} />
           <Text style={{color: 'grey', textAlign: 'center', fontSize: 16}}>No Current Contracts</Text>
-          <PlusButton propStyles={{bottom: -44}} />
+          <CircleButton icon={'plus'} propStyles={{bottom: -44, position: 'absolute'}} />
         </View>
       </View>
       :
       <View>
-        
+
       </View>
     }
 

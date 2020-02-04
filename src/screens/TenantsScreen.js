@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, ScrollView, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import BrandHeader from '../components/BrandHeader';
 import { NavigationEvents } from 'react-navigation';
 import { Context as TenantContext } from '../context/TenantContext';
 import Loading from '../components/Loading';
+import TenantCard from '../components/TenantCard';
 import { lightBlue, darkBlue } from '../styles/styles';
 
 const TenantsScreen = () => {
@@ -27,13 +28,15 @@ const TenantsScreen = () => {
             <Text>Previous</Text>
           </TouchableOpacity>
         </View>
-        {selectedTenants.map(tenant => {
-          return (
-            <View key={tenant.dl_number}>
-              <Text>{tenant.first_name}</Text>
-            </View>
-          )
-        })}
+        <ScrollView >
+          {selectedTenants.map(tenant => {
+            return (
+              <View key={tenant.dl_number}>
+                <TenantCard tenant={tenant}/>
+              </View>
+            )
+          })}
+        </ScrollView>
       </View>
     </>
   )
